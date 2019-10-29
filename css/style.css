@@ -1,0 +1,45 @@
+.navbar-brand {
+    position: relative;
+}
+.navbar-brand img {
+    width: 250px;
+    position: absolute;
+    top: -50px;
+}
+
+.section1-bcg {
+    background-image: url("../img/bcg1.png");
+    background-repeat:no-repeat;
+    background-size: 400px 300px;
+    /* position: sticky;
+    top: 50px;
+    z-index: -100; */
+}
+.bg-light {
+    background-color: white;
+   
+}
+/* .h2-health {
+    color: var(--main_txt_color);
+}
+.h2-power {
+    color: orangered;
+}
+.h2-beauty {
+    color: blue;
+} */
+.h2-write {
+    margin-bottom: 15px;
+}
+.send-mass {
+    background-color: #fed136;
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 5px;
+    transition: 0.4s;
+
+}
+
+.send-mass:hover {
+    background-color: var(--main_txt_color);
+}
