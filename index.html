@@ -63,12 +63,11 @@
 
 
 
-      <button id="openChatBtn">Otwórz czat</button>
+     <button id="openChatBtn">Otwórz czat</button>
 
 <div id="chatModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999;">
-  <div style="width:400px; height:600px; background:white; border-radius:8px; overflow:hidden; position:relative;">
+  <div id="chatContainer" style="width:400px; height:600px; background:white; border-radius:8px; overflow:hidden; position:relative;">
     <button id="closeBtn" style="position:absolute; top:8px; right:8px; cursor:pointer; font-weight:bold; font-size:18px; background:#ccc; border:none; border-radius:50%; width:30px; height:30px;">&times;</button>
-    <div id="chat"></div>
   </div>
 </div>
 
@@ -78,7 +77,7 @@
   const openBtn = document.getElementById('openChatBtn');
   const modal = document.getElementById('chatModal');
   const closeBtn = document.getElementById('closeBtn');
-  const chatDiv = document.getElementById('chat');
+  const chatContainer = document.getElementById('chatContainer');
 
   let chatInstance;
 
@@ -87,7 +86,7 @@
     if (!chatInstance) {
       chatInstance = createChat({
         webhookUrl: 'https://n8n.srv849942.hstgr.cloud/webhook/fc7b15a7-090e-44bf-964d-0f7c972f8ccb/chat',
-        container: chatDiv
+        container: chatContainer
       });
     }
   });
@@ -102,6 +101,7 @@
     }
   });
 </script>
+
 
 
 
