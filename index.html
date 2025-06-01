@@ -28,121 +28,18 @@
 
 <body id="page-top">
 ---------------------------------------
-  <style>
-  #chat-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 320px;
-    max-height: 500px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    overflow: hidden;
-    display: none;
-    flex-direction: column;
-    background: white;
-    font-family: Arial, sans-serif;
-    z-index: 9999;
-  }
+  <!-- Styl chatbota -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat@latest/dist/style.css" rel="stylesheet" />
 
-  #chat-header {
-    background: #4f46e5;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-  }
+<!-- Skrypt chatbota -->
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat@latest/dist/chat.bundle.es.js';
 
-  #chat-messages {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-    font-size: 14px;
-  }
-
-  #chat-input {
-    display: flex;
-    border-top: 1px solid #ddd;
-  }
-
-  #chat-input input {
-    flex: 1;
-    border: none;
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  #chat-input button {
-    background: #4f46e5;
-    color: white;
-    border: none;
-    padding: 0 15px;
-    cursor: pointer;
-  }
-
-  #chat-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #4f46e5;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 9999;
-  }
-</style>
-
-<div id="chat-widget">
-  <div id="chat-header">🤖 Chatbot</div>
-  <div id="chat-messages"></div>
-  <div id="chat-input">
-    <input type="text" id="chat-message" placeholder="Napisz wiadomość..." />
-    <button onclick="sendChat()">➤</button>
-  </div>
-</div>
-
-<button id="chat-toggle" onclick="toggleChat()">💬</button>
-
-<script>
-  const chatWidget = document.getElementById("chat-widget");
-  const chatMessages = document.getElementById("chat-messages");
-
-  function toggleChat() {
-    chatWidget.style.display = chatWidget.style.display === "flex" ? "none" : "flex";
-  }
-
-  async function sendChat() {
-    const input = document.getElementById("chat-message");
-    const message = input.value.trim();
-    if (!message) return;
-
-    appendMessage("Ty", message);
-    input.value = "";
-
-    try {
-      const res = await fetch("https://twojadomena.com/webhook/chatbot", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
-      });
-
-      const data = await res.json();
-      appendMessage("Bot", data.reply || "Brak odpowiedzi.");
-    } catch (e) {
-      appendMessage("Bot", "Wystąpił błąd podczas połączenia.");
-    }
-  }
-
-  function appendMessage(sender, text) {
-    const msg = document.createElement("div");
-    msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
+  createChat({
+    webhookUrl: 'https://n8n.leonvanzyl.com/webhook/b5a148be-10d7-4fb4-be47-alaacd112b70/chat'
+  });
 </script>
+
 
   --------------------------------------------
 
